@@ -431,7 +431,7 @@ sub songList {
        	my $songList = shift;
 		my $songs = [];
 
-		foreach my $song ( @{$songList->{'subsonic-response'}->{getRandomSongs}->{song}} ) {
+		foreach my $song ( @{$songList->{'subsonic-response'}->{randomSongs}->{song}} ) {
 			push @$songs, _formatTrack(_cacheTrack($song));
 		}
 		$cb->({
