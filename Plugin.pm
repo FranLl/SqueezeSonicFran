@@ -386,30 +386,6 @@ sub albumList {
 	}, 'getAlbumList2',$id,$prefs->get('tlists'),$pa);
 }
 
-sub songList {
-        my ($client, $cb, $params, $args) = @_;
- 	my $id;
-        my $pa;
-	my $img = 'html/images/newmusic.png';
-
-	$id = $args->{mode};
-    $pa = "type=" .  $args->{mode} . "&size=" . $prefs->get('slists');
-	$img = 'plugins/SqueezeSonicFran/html/images/random.png' if ($args->{mode} eq "random");
-
-	Plugins::SqueezeSonicFran::API->get(sub {
-       		my $songList = shift;
-		my $songs = [];
-
-		foreach my $song ( @{$songList->{'subsonic-response'}->{getRandomSongs}->{song}} ) {
-			$song->{image} = _getImage($song->{coverArt});
-			push @$songs, _formatAlbum($song);
-		}
-		$cb->({
-			items => $songs
-		});
-	}, 'getRandomSongs',$id,$prefs->get('slists'),$pa);
-}
-
 sub _formatAlbum {
 	my ($album) = @_;
 
@@ -439,6 +415,30 @@ sub album {
                                 items => $tracks
                         });
         }, 'getAlbum',$args->{album_id},$prefs->get('tmusic'),"id=" . $args->{album_id});
+}
+
+sub songList {
+    my ($client, $cb, $params, $args) = @_;
+ 	my $id;
+    my $pa;
+	my $img = 'html/images/newmusic.png';
+
+	$id = $args->{mode};
+    $pa = "type=" .  $args->{mode} . "&size=" . $prefs->get('tlists');
+	$img = 'plugins/SqueezeSonicFran/html/images/random.png' if ($args->{mode} eq "randommix");
+
+	Plugins::SqueezeSonicFran::API->get(sub {
+       	my $songList = shift;
+		my $songs = [];
+
+		foreach my $song ( @{$songList->{'subsonic-response'}->{getRandomSongs}->{song}} ) {
+			$song->{image} = _getImage($song->{coverArt});
+			push @$songs, _formatTrack(_cacheTrack($song));
+		}
+		$cb->({
+			items => $songs
+		});
+	}, 'getRandomSongs',$id,$prefs->get('tlists'),$pa);
 }
 
 sub _formatTrack {
