@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<extension>
+  <name>PLUGIN_SQUEEZESONICFRAN</name>
+  <module>Plugins::SqueezeSonicFran::Plugin</module>
+  <version>0.1</version>
+  <description>PLUGIN_SQUEEZESONICFRAN_DESC</description>
+  <creator>fran</creator>
+  <email>fran@fran.com</email>
+  <defaultState>enabled</defaultState>
+  <icon>plugins/SqueezeSonicFran/html/images/subsonic.png</icon>
+  <optionsURL>plugins/SqueezeSonicFran/settings/basic.html</optionsURL>
+  <homepageURL>http://www.fran.com/</homepageURL>
+  <type>2</type>
+  <!-- type=extension -->
+  <targetApplication>
+    <id>SqueezeCenter</id>
+    <minVersion>7.6</minVersion>
+    <maxVersion>*</maxVersion>
+  </targetApplication>
+</extension>
