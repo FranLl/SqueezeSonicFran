@@ -2,7 +2,7 @@
 <extension>
   <name>PLUGIN_SQUEEZESONICFRAN</name>
   <module>Plugins::SqueezeSonicFran::Plugin</module>
-  <version>0.1.1</version>
+  <version>0.1.2</version>
   <description>PLUGIN_SQUEEZESONICFRAN_DESC</description>
   <creator>fran</creator>
   <email>fran@fran.com</email>
