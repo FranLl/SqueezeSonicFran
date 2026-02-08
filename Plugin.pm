@@ -94,7 +94,7 @@ sub handleFeed {
 						url  => \&songList,
 						image => 'plugins/SqueezeSonicFran/html/images/random.png',
 						passthrough => [{
-                                		        mode => 'randommix',
+                                		        mode => 'random',
                         			}]
 				},{
 						name => cstring($client, 'PLUGIN_SQUEEZESONICFRAN_RECENTLY_ADDED'),
@@ -424,8 +424,8 @@ sub songList {
 	my $img = 'html/images/newmusic.png';
 
 	$id = $args->{mode};
-    $pa = "type=" .  $args->{mode} . "&size=" . $prefs->get('tlists');
-	$img = 'plugins/SqueezeSonicFran/html/images/random.png' if ($args->{mode} eq "randommix");
+    $pa = "size=" . $prefs->get('slists');
+	$img = 'plugins/SqueezeSonicFran/html/images/random.png' if ($args->{mode} eq "random");
 
 	Plugins::SqueezeSonicFran::API->get(sub {
        	my $songList = shift;
