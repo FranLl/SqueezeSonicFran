@@ -424,7 +424,7 @@ sub songList {
 	my $img = 'html/images/newmusic.png';
 
 	$id = $args->{mode};
-    $pa = "size=" . $prefs->get('slists');
+    $pa = "size=" . $prefs->get('tlists');
 	$img = 'plugins/SqueezeSonicFran/html/images/random.png' if ($args->{mode} eq "random");
 
 	Plugins::SqueezeSonicFran::API->get(sub {
@@ -432,13 +432,12 @@ sub songList {
 		my $songs = [];
 
 		foreach my $song ( @{$songList->{'subsonic-response'}->{getRandomSongs}->{song}} ) {
-			$song->{image} = _getImage($song->{coverArt});
 			push @$songs, _formatTrack(_cacheTrack($song));
 		}
 		$cb->({
 			items => $songs
 		});
-	}, 'getRandomSongs',$id,$prefs->get('tlists'),$pa);
+	}, 'getRandomSongs',$id,$prefs->get('tmusic'),$pa);
 }
 
 sub _formatTrack {
