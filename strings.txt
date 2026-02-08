@@ -1,8 +1,8 @@
 # String file for Subsonic plugin
 
 PLUGIN_SQUEEZESONICFRAN
-	EN	SqueezeSonic
-	FR	SqueezeSonic
+	EN	SqueezeSonicFran
+	FR	SqueezeSonicFran
 
 PLUGIN_SQUEEZESONICFRAN_DESC
 	EN	Listen music from a Subsonic API capable (>1.11.0) backend - "Fran's edition"
