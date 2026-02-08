@@ -405,9 +405,9 @@ sub songList {
 			push @$songs, _formatAlbum($song);
 		}
 		$cb->({
-			items => $albums
+			items => $songs
 		});
-	}, 'getRandomSongs',$id,$prefs->get('tlists'),$pa);
+	}, 'getRandomSongs',$id,$prefs->get('slists'),$pa);
 }
 
 sub _formatAlbum {
